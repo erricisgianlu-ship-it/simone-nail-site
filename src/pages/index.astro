@@ -1,0 +1,133 @@
+---
+import { contactLinks, siteConfig } from '@/config/site';
+import { getServices } from '@/lib/services';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const services = await getServices();
+const euro = new Intl.NumberFormat('it-IT', {
+  style: 'currency',
+  currency: 'EUR',
+  maximumFractionDigits: 0,
+});
+---
+
+<BaseLayout>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label={`${siteConfig.name}, torna all'inizio`}>
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>{siteConfig.name}</span>
+    </a>
+    <a class="header-link" href="#listino">Listino</a>
+  </header>
+
+  <main id="contenuto">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">{siteConfig.eyebrow}</p>
+        <h1 id="hero-title">La tua eleganza,<br /><em>fino alle dita.</em></h1>
+        <p class="hero-intro">{siteConfig.description}</p>
+        <div class="hero-actions" aria-label="Contatti">
+          {
+            contactLinks.whatsapp ? (
+              <a class="button button-primary" href={contactLinks.whatsapp} target="_blank" rel="noreferrer">
+                Scrivimi su WhatsApp
+                <span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <span class="button button-disabled" aria-disabled="true">WhatsApp in arrivo</span>
+            )
+          }
+          {
+            contactLinks.instagram ? (
+              <a class="button button-ghost" href={contactLinks.instagram} target="_blank" rel="noreferrer">
+                Seguimi su Instagram
+              </a>
+            ) : (
+              <span class="button button-ghost button-disabled" aria-disabled="true">Instagram in arrivo</span>
+            )
+          }
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-frame">
+          <div class="art-arch"></div>
+          <div class="art-monogram">SN</div>
+          <span class="spark spark-one">✦</span>
+          <span class="spark spark-two">✦</span>
+        </div>
+        <p>Manicure · Gel · Nail art</p>
+      </div>
+    </section>
+
+    <section class="promise" aria-label="Il servizio">
+      <p>Dettagli curati</p>
+      <span aria-hidden="true">✦</span>
+      <p>Risultato su misura</p>
+      <span aria-hidden="true">✦</span>
+      <p>Stile personale</p>
+    </section>
+
+    <section class="price-section" id="listino" aria-labelledby="price-title">
+      <div class="section-heading">
+        <p class="eyebrow">Trattamenti</p>
+        <h2 id="price-title">Il listino</h2>
+        <p>Scegli il trattamento. Per dubbi, lunghezze o nail art scrivimi prima dell’appuntamento.</p>
+      </div>
+
+      <ul class="price-list" aria-label="Listino trattamenti">
+        {
+          services.map((item) => (
+            <li class:list={['price-item', { supplement: item.supplement }]}>
+              <div class="service-name">
+                {item.supplement && <span class="service-tag">Supplemento</span>}
+                <h3>{item.service}</h3>
+              </div>
+              <p class="price">
+                {item.from && <span>da</span>}
+                {euro.format(item.price)}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="price-note">
+        I prezzi possono variare in base alla lunghezza e al lavoro richiesto. Concordiamo tutto prima di iniziare.
+      </p>
+    </section>
+
+    <section class="contact-section" aria-labelledby="contact-title">
+      <p class="eyebrow">Prenota</p>
+      <h2 id="contact-title">Pronta per il tuo prossimo set?</h2>
+      <p>Raccontami cosa ti piacerebbe realizzare e troviamo insieme la soluzione giusta.</p>
+      {
+        contactLinks.whatsapp ? (
+          <a class="button button-primary" href={contactLinks.whatsapp} target="_blank" rel="noreferrer">
+            Chiedi disponibilità
+            <span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <p class="contact-pending">Contatto WhatsApp in aggiornamento.</p>
+        )
+      }
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>{siteConfig.name}</span>
+    </a>
+    {
+      contactLinks.instagram ? (
+        <a class="footer-link" href={contactLinks.instagram} target="_blank" rel="noreferrer">
+          @{siteConfig.instagramHandle}
+        </a>
+      ) : (
+        <span class="footer-muted">Instagram da configurare</span>
+      )
+    }
+  </footer>
+</BaseLayout>
