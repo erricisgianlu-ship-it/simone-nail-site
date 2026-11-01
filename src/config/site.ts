@@ -1,8 +1,19 @@
 const cleanHandle = (value: string) => value.trim().replace(/^@/, '');
 const cleanPhone = (value: string) => value.replace(/\D/g, '');
 
-const whatsappNumber = cleanPhone(import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? '');
-const instagramHandle = cleanHandle(import.meta.env.PUBLIC_INSTAGRAM_HANDLE ?? '');
+const defaultContacts = {
+  whatsappNumber: '393296038993',
+  instagramHandle: 'simone_nailmaster',
+} as const;
+
+const whatsappNumber = cleanPhone(
+  import.meta.env.PUBLIC_WHATSAPP_NUMBER?.trim() ||
+    defaultContacts.whatsappNumber,
+);
+const instagramHandle = cleanHandle(
+  import.meta.env.PUBLIC_INSTAGRAM_HANDLE?.trim() ||
+    defaultContacts.instagramHandle,
+);
 
 export const siteConfig = {
   name: 'Simone Nails',

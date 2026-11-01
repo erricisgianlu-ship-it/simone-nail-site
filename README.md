@@ -14,8 +14,10 @@ cp .env.example .env
 npm run dev
 ```
 
-La configurazione dei contatti è centralizzata in `src/config/site.ts`; i valori
-reali arrivano dalle variabili:
+La configurazione dei contatti è centralizzata in `src/config/site.ts`. I valori
+predefiniti sono WhatsApp `+39 329 6038993` e Instagram
+`@simone_nailmaster`; le variabili d'ambiente, quando valorizzate, hanno la
+precedenza:
 
 | Variabile | Formato | Obbligatoria |
 | --- | --- | --- |
@@ -24,9 +26,8 @@ reali arrivano dalle variabili:
 | `PUBLIC_SANITY_PROJECT_ID` | project ID pubblico di Sanity | No |
 | `PUBLIC_SANITY_DATASET` | dataset Sanity, default `production` | No |
 
-Se i contatti sono vuoti, le CTA vengono mostrate come non disponibili: non
-viene pubblicato alcun recapito fittizio. Se Sanity non è configurato o non è
-raggiungibile, la build usa `src/data/services.ts`.
+Se Sanity non è configurato o non è raggiungibile, la build usa
+`src/data/services.ts`.
 
 Controlli:
 
@@ -49,8 +50,8 @@ impostazioni esatte:
 
 Variabili di produzione e preview:
 
-- `PUBLIC_WHATSAPP_NUMBER` — da fornire
-- `PUBLIC_INSTAGRAM_HANDLE` — da fornire
+- `PUBLIC_WHATSAPP_NUMBER=393296038993` — opzionale, sovrascrive il default
+- `PUBLIC_INSTAGRAM_HANDLE=simone_nailmaster` — opzionale, sovrascrive il default
 - `PUBLIC_SANITY_PROJECT_ID` — da fornire solo dopo aver creato Sanity
 - `PUBLIC_SANITY_DATASET=production`
 
@@ -97,8 +98,6 @@ pubblico e non richiede secret.
 
 ## Dati ancora necessari
 
-- numero WhatsApp completo di prefisso internazionale;
-- handle Instagram;
 - project ID Sanity;
 - URL definitivo del sito per impostare la CORS origin in Sanity;
 - eventuale dominio/hostname desiderato per Sanity Studio.
