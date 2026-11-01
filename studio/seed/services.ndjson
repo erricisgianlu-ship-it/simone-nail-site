@@ -1,0 +1,9 @@
+{"_id":"servizio-manicure-semplice","_type":"servizio","servizio":"Manicure semplice","prezzo":15,"da":false,"supplemento":false,"ordine":10,"visibile":true}
+{"_id":"servizio-manicure-semipermanente","_type":"servizio","servizio":"Manicure semplice + semipermanente lucido","prezzo":20,"da":false,"supplemento":false,"ordine":20,"visibile":true}
+{"_id":"servizio-semipermanente-rinforzato","_type":"servizio","servizio":"Semipermanente rinforzato","prezzo":35,"da":false,"supplemento":false,"ordine":30,"visibile":true}
+{"_id":"servizio-refill-gel-corto","_type":"servizio","servizio":"Refill gel corto o copertura unghia naturale","prezzo":40,"da":false,"supplemento":false,"ordine":40,"visibile":true}
+{"_id":"servizio-refill-gel-medio","_type":"servizio","servizio":"Refill gel medio o allungamento senza cartina","prezzo":45,"da":false,"supplemento":false,"ordine":50,"visibile":true}
+{"_id":"servizio-refill-gel-lungo","_type":"servizio","servizio":"Refill gel lungo","prezzo":50,"da":false,"supplemento":false,"ordine":60,"visibile":true}
+{"_id":"servizio-ricostruzione-cartina","_type":"servizio","servizio":"Ricostruzione con cartina","prezzo":60,"da":true,"supplemento":false,"ordine":70,"visibile":true}
+{"_id":"servizio-rimozione","_type":"servizio","servizio":"Rimozione semipermanente o gel","prezzo":5,"da":false,"supplemento":false,"ordine":80,"visibile":true}
+{"_id":"servizio-supplemento-nail-art","_type":"servizio","servizio":"French, baby boomer o decori","prezzo":5,"da":false,"supplemento":true,"ordine":90,"visibile":true}

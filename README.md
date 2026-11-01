@@ -1,1 +1,104 @@
-# simone-nail-site
+# Simone Nails
+
+Landing page mobile-first in Astro, pronta per Cloudflare Pages. Il sito funziona
+subito con il listino locale e può leggere lo stesso contenuto da Sanity senza
+token in fase di build.
+
+## Sviluppo locale
+
+Requisiti: Node.js 22 e npm.
+
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
+
+La configurazione dei contatti è centralizzata in `src/config/site.ts`; i valori
+reali arrivano dalle variabili:
+
+| Variabile | Formato | Obbligatoria |
+| --- | --- | --- |
+| `PUBLIC_WHATSAPP_NUMBER` | prefisso internazionale + numero, solo cifre (es. `39…`) | No |
+| `PUBLIC_INSTAGRAM_HANDLE` | username, con o senza `@` | No |
+| `PUBLIC_SANITY_PROJECT_ID` | project ID pubblico di Sanity | No |
+| `PUBLIC_SANITY_DATASET` | dataset Sanity, default `production` | No |
+
+Se i contatti sono vuoti, le CTA vengono mostrate come non disponibili: non
+viene pubblicato alcun recapito fittizio. Se Sanity non è configurato o non è
+raggiungibile, la build usa `src/data/services.ts`.
+
+Controlli:
+
+```bash
+npm test
+npm run build
+```
+
+## Cloudflare Pages
+
+Creare un progetto **Pages** collegato a questo repository con queste
+impostazioni esatte:
+
+- Framework preset: `Astro`
+- Production branch: `main`
+- Root directory: `/` (lasciare vuoto nel pannello)
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node.js version: `22` tramite variabile `NODE_VERSION=22`
+
+Variabili di produzione e preview:
+
+- `PUBLIC_WHATSAPP_NUMBER` — da fornire
+- `PUBLIC_INSTAGRAM_HANDLE` — da fornire
+- `PUBLIC_SANITY_PROJECT_ID` — da fornire solo dopo aver creato Sanity
+- `PUBLIC_SANITY_DATASET=production`
+
+Non servono adapter, token o secret Cloudflare: l'output è interamente statico.
+Ogni modifica al listino su Sanity richiede una nuova build/deploy di Pages.
+
+## Gestione listino con Sanity Studio
+
+Lo Studio è isolato in `studio/`, quindi non appesantisce né blocca la build del
+sito.
+
+1. Creare un progetto su [sanity.io/manage](https://sanity.io/manage) e annotare
+   il project ID pubblico.
+2. Configurare lo Studio:
+
+   ```bash
+   cd studio
+   npm install
+   cp .env.example .env
+   # inserire SANITY_STUDIO_PROJECT_ID in .env
+   npm run dev
+   ```
+
+3. Importare una volta il listino iniziale:
+
+   ```bash
+   npx sanity dataset import seed/services.ndjson production --replace
+   ```
+
+4. In Sanity, aggiungere l'origine Cloudflare (dominio di produzione e preview,
+   se usata) tra le CORS origins con credenziali disattivate.
+5. Copiare project ID e dataset nelle variabili Cloudflare indicate sopra.
+
+Lo schema `servizio` espone: servizio, prezzo, prefisso “da”, supplemento,
+ordine e visibilità. Per pubblicare lo Studio indipendentemente:
+
+```bash
+cd studio
+npm run deploy
+```
+
+Il login e le scritture avvengono solo nello Studio; il sito legge il dataset
+pubblico e non richiede secret.
+
+## Dati ancora necessari
+
+- numero WhatsApp completo di prefisso internazionale;
+- handle Instagram;
+- project ID Sanity;
+- URL definitivo del sito per impostare la CORS origin in Sanity;
+- eventuale dominio/hostname desiderato per Sanity Studio.

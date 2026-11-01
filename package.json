@@ -1,0 +1,43 @@
+{
+  "name": "simone-nails",
+  "version": "1.0.0",
+  "description": "Landing mobile-first di Simone Nails",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "npm run check",
+    "studio:install": "npm --prefix studio install",
+    "studio:dev": "npm --prefix studio run dev",
+    "studio:deploy": "npm --prefix studio run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erricisgianlu-ship-it/simone-nail-site.git"
+  },
+  "keywords": [
+    "astro",
+    "cloudflare-pages",
+    "sanity"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/erricisgianlu-ship-it/simone-nail-site/issues"
+  },
+  "homepage": "https://github.com/erricisgianlu-ship-it/simone-nail-site#readme",
+  "dependencies": {
+    "@sanity/client": "^8.14.1",
+    "astro": "^7.4.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^6.0.3"
+  }
+}
