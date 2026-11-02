@@ -16,7 +16,7 @@ npm run dev
 
 La configurazione dei contatti è centralizzata in `src/config/site.ts`. I valori
 predefiniti sono WhatsApp `+39 329 6038993` e Instagram
-`@simone_nailmaster`; le variabili d'ambiente, quando valorizzate, hanno la
+`@simonenailmaster`; le variabili d'ambiente, quando valorizzate, hanno la
 precedenza:
 
 | Variabile | Formato | Obbligatoria |
@@ -52,7 +52,7 @@ Creare (o ritentare) un progetto Workers collegato a questo repository:
 Variabili di produzione e preview:
 
 - `PUBLIC_WHATSAPP_NUMBER=393296038993` — opzionale, sovrascrive il default
-- `PUBLIC_INSTAGRAM_HANDLE=simone_nailmaster` — opzionale, sovrascrive il default
+- `PUBLIC_INSTAGRAM_HANDLE=simonenailmaster` — opzionale, sovrascrive il default
 - `PUBLIC_SANITY_PROJECT_ID` — da fornire solo dopo aver creato Sanity
 - `PUBLIC_SANITY_DATASET=production`
 
