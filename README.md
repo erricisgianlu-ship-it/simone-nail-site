@@ -36,16 +36,17 @@ npm test
 npm run build
 ```
 
-## Cloudflare Pages
+## Cloudflare Workers
 
-Creare un progetto **Pages** collegato a questo repository con queste
-impostazioni esatte:
+Il deploy è un sito **statico**. `wrangler.jsonc` punta `assets.directory` a
+`./dist` e non usa adapter SSR: Wrangler non deve eseguire `astro add cloudflare`.
 
-- Framework preset: `Astro`
+Creare (o ritentare) un progetto Workers collegato a questo repository:
+
 - Production branch: `main`
 - Root directory: `/` (lasciare vuoto nel pannello)
 - Build command: `npm run build`
-- Build output directory: `dist`
+- Deploy command: `npx wrangler deploy` (default Cloudflare)
 - Node.js version: `22` tramite variabile `NODE_VERSION=22`
 
 Variabili di produzione e preview:
@@ -56,7 +57,7 @@ Variabili di produzione e preview:
 - `PUBLIC_SANITY_DATASET=production`
 
 Non servono adapter, token o secret Cloudflare: l'output è interamente statico.
-Ogni modifica al listino su Sanity richiede una nuova build/deploy di Pages.
+Ogni modifica al listino su Sanity richiede una nuova build/deploy.
 
 ## Gestione listino con Sanity Studio
 
