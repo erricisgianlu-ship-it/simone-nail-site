@@ -3,7 +3,7 @@ const cleanPhone = (value: string) => value.replace(/\D/g, '');
 
 const defaultContacts = {
   whatsappNumber: '393296038993',
-  instagramHandle: 'simone_nailmaster',
+  instagramHandle: 'simonenailmaster',
 } as const;
 
 const whatsappNumber = cleanPhone(
@@ -30,6 +30,6 @@ export const contactLinks = {
     ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`
     : null,
   instagram: instagramHandle
-    ? `https://instagram.com/${instagramHandle}`
+    ? `https://www.instagram.com/${instagramHandle}/`
     : null,
 } as const;
