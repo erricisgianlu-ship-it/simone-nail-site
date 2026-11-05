@@ -1,4 +1,4 @@
-# Simone Nails
+# Simone Nail Master
 
 Landing page mobile-first in Astro, pronta per Cloudflare Pages. Il sito funziona
 subito con il listino locale e può leggere lo stesso contenuto da Sanity senza

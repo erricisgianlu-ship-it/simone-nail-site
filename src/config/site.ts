@@ -16,8 +16,7 @@ const instagramHandle = cleanHandle(
 );
 
 export const siteConfig = {
-  name: 'Simone Nails',
-  eyebrow: 'Nail care',
+  name: 'Simone Nail Master',
   description:
     'Manicure, semipermanente, gel e ricostruzione: scegli il trattamento più adatto alle tue unghie.',
   whatsappNumber,
