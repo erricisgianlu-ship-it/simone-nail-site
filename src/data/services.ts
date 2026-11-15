@@ -60,6 +60,13 @@ export const fallbackServices: NailService[] = [
     visible: true,
   },
   {
+    id: 'correzione-unghie',
+    service: 'Correzione unghie',
+    price: 5,
+    order: 75,
+    visible: true,
+  },
+  {
     id: 'rimozione',
     service: 'Rimozione semipermanente o gel',
     price: 5,
