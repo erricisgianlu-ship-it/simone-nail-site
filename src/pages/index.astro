@@ -9,6 +9,7 @@ const euro = new Intl.NumberFormat('it-IT', {
   currency: 'EUR',
   maximumFractionDigits: 0,
 });
+const taglineLines = siteConfig.tagline.split(/(?<=\.) /);
 ---
 
 <BaseLayout>
@@ -32,8 +33,22 @@ const euro = new Intl.NumberFormat('it-IT', {
             height="103"
           />
         </p>
-        <h1 id="hero-title">La tua eleganza,<br /><em>fino alle dita.</em></h1>
-        <p class="hero-intro">{siteConfig.description}</p>
+        <h1 id="hero-title">
+          {
+            taglineLines.map((line, index) =>
+              index === taglineLines.length - 1 ? (
+                <em>{line}</em>
+              ) : (
+                <>
+                  {line}
+                  <br />
+                </>
+              ),
+            )
+          }
+        </h1>
+        <p class="hero-intro">{siteConfig.intro}</p>
+        <p class="hero-treatments">{siteConfig.treatmentsLine}</p>
         <div class="hero-actions" aria-label="Contatti">
           {
             contactLinks.whatsapp ? (
@@ -107,8 +122,8 @@ const euro = new Intl.NumberFormat('it-IT', {
 
     <section class="contact-section" aria-labelledby="contact-title">
       <p class="eyebrow">Prenota</p>
-      <h2 id="contact-title">Pronta per il tuo prossimo set?</h2>
-      <p>Raccontami cosa ti piacerebbe realizzare e troviamo insieme la soluzione giusta.</p>
+      <h2 id="contact-title">{siteConfig.ctaHeading}</h2>
+      <p>{siteConfig.ctaBody}</p>
       {
         contactLinks.whatsapp ? (
           <a class="button button-primary" href={contactLinks.whatsapp} target="_blank" rel="noreferrer">

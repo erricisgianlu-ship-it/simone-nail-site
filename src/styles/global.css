@@ -1,12 +1,16 @@
 :root {
-  color-scheme: dark;
-  --ink: #080808;
-  --ink-soft: #11100f;
+  color-scheme: light;
+  --vinaccia: #521a2f;
+  --vinaccia-soft: #6d2a40;
+  --paper: #fbf7f2;
+  --cream: #f7f1ea;
+  --cream-deep: #efe4d8;
+  --ink: #24151b;
+  --ink-soft: #3a242c;
   --gold: #c89a62;
-  --champagne: #e7d1b4;
-  --cream: #f5ede3;
-  --muted: #a99d8f;
-  --line: rgb(231 209 180 / 18%);
+  --champagne: #b88958;
+  --muted: #6f5b62;
+  --line: rgb(82 26 47 / 14%);
   --serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
   --sans: "Avenir Next", "Avenir", "Helvetica Neue", Arial, sans-serif;
 }
@@ -17,7 +21,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--ink);
+  background: var(--paper);
   overflow-x: hidden;
 }
 
@@ -26,9 +30,10 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 100% 0%, rgb(200 154 98 / 10%), transparent 30rem),
-    var(--ink);
-  color: var(--cream);
+    linear-gradient(var(--vinaccia), var(--vinaccia)) top / 100% 4px no-repeat,
+    radial-gradient(circle at 100% 0%, rgb(200 154 98 / 14%), transparent 28rem),
+    var(--paper);
+  color: var(--ink);
   font-family: var(--sans);
   font-size: 1rem;
   line-height: 1.6;
@@ -52,8 +57,8 @@ a {
   padding: 0.7rem 1rem;
   transform: translateY(-150%);
   border-radius: 999px;
-  background: var(--champagne);
-  color: var(--ink);
+  background: var(--vinaccia);
+  color: var(--cream);
   font-weight: 700;
   transition: transform 180ms ease;
 }
@@ -84,7 +89,7 @@ footer {
   min-width: 0;
   align-items: center;
   gap: 0.55rem;
-  color: var(--champagne);
+  color: var(--vinaccia);
   font-family: var(--serif);
   font-size: clamp(0.92rem, 2.8vw + 0.4rem, 1.05rem);
   letter-spacing: 0.04em;
@@ -98,9 +103,9 @@ footer {
   width: 2rem;
   height: 2rem;
   place-items: center;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--vinaccia);
   border-radius: 50%;
-  color: var(--gold);
+  color: var(--vinaccia);
   font-size: 1.05rem;
   line-height: 1;
 }
@@ -108,7 +113,7 @@ footer {
 .header-link {
   position: relative;
   flex-shrink: 0;
-  color: var(--champagne);
+  color: var(--vinaccia);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -122,7 +127,7 @@ footer {
   bottom: -0.35rem;
   left: 0;
   height: 1px;
-  background: var(--gold);
+  background: var(--vinaccia);
   content: "";
   transform: scaleX(0.45);
   transform-origin: right;
@@ -158,15 +163,16 @@ footer {
   right: -4rem;
   width: min(18rem, 70vw);
   height: min(18rem, 70vw);
-  border: 1px solid rgb(200 154 98 / 18%);
+  border: 1px solid rgb(82 26 47 / 10%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(200 154 98 / 10%), transparent 68%);
+  background: radial-gradient(circle, rgb(82 26 47 / 7%), transparent 68%);
   pointer-events: none;
 }
 
 .hero-wordmark {
   width: min(15.9rem, 82%);
   margin: 0 0 1.15rem;
+  padding-bottom: 0.85rem;
 }
 
 .hero-wordmark img {
@@ -175,12 +181,21 @@ footer {
   height: auto;
 }
 
+.hero-wordmark::after {
+  display: block;
+  width: 3.4rem;
+  height: 2px;
+  margin-top: 0.75rem;
+  background: var(--vinaccia);
+  content: "";
+}
+
 .eyebrow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin: 0 0 1rem;
-  color: var(--gold);
+  color: var(--vinaccia);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.24em;
@@ -203,6 +218,7 @@ p {
 
 h1,
 h2 {
+  color: var(--vinaccia);
   font-family: var(--serif);
   font-weight: 400;
   letter-spacing: -0.035em;
@@ -210,22 +226,33 @@ h2 {
 }
 
 h1 {
-  max-width: min(11ch, 100%);
+  max-width: min(18ch, 100%);
   margin-bottom: 1.5rem;
-  font-size: clamp(2.05rem, 7vw + 0.45rem, 7.5rem);
+  font-size: clamp(1.95rem, 6.4vw + 0.4rem, 6.2rem);
   overflow-wrap: break-word;
 }
 
 h1 em {
-  color: var(--gold);
+  color: var(--vinaccia);
+  font-style: italic;
   font-weight: 400;
 }
 
 .hero-intro {
   max-width: 35rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.85rem;
   color: var(--muted);
   font-size: 1rem;
+}
+
+.hero-treatments {
+  max-width: 35rem;
+  margin-bottom: 2rem;
+  color: var(--vinaccia);
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  overflow-wrap: break-word;
 }
 
 .hero-actions {
@@ -260,23 +287,24 @@ h1 em {
 }
 
 .button-primary {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--vinaccia);
+  color: var(--cream);
 }
 
 .button-primary:hover,
 .button-primary:focus-visible {
-  background: var(--champagne);
+  background: var(--vinaccia-soft);
 }
 
 .button-ghost {
-  border-color: var(--line);
-  color: var(--champagne);
+  border-color: rgb(82 26 47 / 28%);
+  color: var(--vinaccia);
 }
 
 .button-ghost:hover,
 .button-ghost:focus-visible {
-  border-color: var(--gold);
+  border-color: var(--vinaccia);
+  background: rgb(82 26 47 / 5%);
 }
 
 .button-disabled {
@@ -296,6 +324,7 @@ h1 em {
   gap: 0.55rem 1.15rem;
   padding: 1rem;
   border-block: 1px solid var(--line);
+  background: rgb(82 26 47 / 4%);
   color: var(--muted);
 }
 
@@ -358,7 +387,7 @@ h1 em {
 
 .price-item h3 {
   margin: 0;
-  color: var(--champagne);
+  color: var(--vinaccia);
   font-family: var(--serif);
   font-size: clamp(1rem, 3.6vw + 0.35rem, 1.45rem);
   font-weight: 400;
@@ -389,7 +418,7 @@ h1 em {
 .service-tag {
   display: inline-block;
   margin-bottom: 0.35rem;
-  color: var(--gold);
+  color: var(--vinaccia);
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -399,8 +428,8 @@ h1 em {
 .price-item.supplement {
   margin-top: 1rem;
   padding-inline: 0.85rem;
-  border: 1px solid rgb(200 154 98 / 34%);
-  background: rgb(200 154 98 / 5%);
+  border: 1px solid rgb(82 26 47 / 18%);
+  background: rgb(82 26 47 / 4%);
 }
 
 .price-note {
@@ -416,10 +445,11 @@ h1 em {
   width: min(100% - 2rem, 75rem);
   margin: 0 auto 1rem;
   padding: 3.5rem 1.5rem;
-  border: 1px solid rgb(200 154 98 / 28%);
+  border: 1px solid rgb(82 26 47 / 16%);
+  border-top: 3px solid var(--vinaccia);
   background:
-    linear-gradient(120deg, rgb(200 154 98 / 9%), transparent 58%),
-    var(--ink-soft);
+    linear-gradient(180deg, rgb(82 26 47 / 4%), transparent 42%),
+    var(--cream);
 }
 
 .contact-section > p:not(.eyebrow, .contact-pending) {
@@ -433,7 +463,7 @@ h1 em {
 
 .contact-pending {
   margin: 0.5rem 0 0;
-  color: var(--gold);
+  color: var(--vinaccia);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -470,7 +500,7 @@ footer {
 }
 
 :focus-visible {
-  outline: 2px solid var(--champagne);
+  outline: 2px solid var(--vinaccia);
   outline-offset: 4px;
 }
 
@@ -537,23 +567,23 @@ footer {
     display: grid;
     aspect-ratio: 4 / 5;
     place-items: center;
-    border: 1px solid rgb(231 209 180 / 30%);
+    border: 1px solid rgb(82 26 47 / 16%);
     background:
-      linear-gradient(145deg, rgb(200 154 98 / 15%), transparent 48%),
-      #0e0d0c;
-    box-shadow: 1.5rem 1.5rem 0 rgb(200 154 98 / 7%);
+      linear-gradient(145deg, rgb(82 26 47 / 6%), transparent 48%),
+      var(--cream);
+    box-shadow: 1.5rem 1.5rem 0 rgb(82 26 47 / 6%);
   }
 
   .art-arch {
     position: absolute;
     inset: 12% 13%;
-    border: 1px solid rgb(200 154 98 / 55%);
+    border: 1px solid rgb(82 26 47 / 42%);
     border-radius: 50% 50% 0 0;
   }
 
   .art-monogram {
     z-index: 1;
-    color: var(--champagne);
+    color: var(--vinaccia);
     font-family: var(--serif);
     font-size: 4.5rem;
     letter-spacing: -0.12em;
@@ -605,7 +635,7 @@ footer {
 
   .price-item:not(.supplement):hover {
     padding-inline: 1rem;
-    background: linear-gradient(90deg, rgb(200 154 98 / 7%), transparent);
+    background: linear-gradient(90deg, rgb(82 26 47 / 5%), transparent);
   }
 }
 

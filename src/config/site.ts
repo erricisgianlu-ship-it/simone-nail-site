@@ -17,8 +17,16 @@ const instagramHandle = cleanHandle(
 
 export const siteConfig = {
   name: 'Simone Nail Master',
+  tagline: 'Le tue mani. Il tuo stile. Il mio carattere.',
+  intro:
+    'Non si tratta soltanto di avere belle unghie. Si tratta di trovare lo stile che ti rappresenta, curando ogni dettaglio.',
+  treatmentsLine:
+    'Manicure, semipermanente, gel, ricostruzione e nail art.',
+  ctaHeading: 'È il momento di dedicarti alle tue mani.',
+  ctaBody:
+    'Per informazioni, appuntamenti o per raccontarmi la tua prossima idea, scrivimi direttamente su WhatsApp.',
   description:
-    'Manicure, semipermanente, gel e ricostruzione: scegli il trattamento più adatto alle tue unghie.',
+    'Non si tratta soltanto di avere belle unghie. Si tratta di trovare lo stile che ti rappresenta, curando ogni dettaglio.',
   whatsappNumber,
   instagramHandle,
   whatsappMessage: 'Ciao Simone, vorrei chiederti informazioni per un appuntamento.',
